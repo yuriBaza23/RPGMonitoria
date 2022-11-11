@@ -1,4 +1,21 @@
 from random import randint
+from datetime import datetime, timedelta
+
+class Config:
+    def __init__(self):
+        self.lvl = 1
+        self.exp = 0
+
+    def level(self):
+        """Faz updates de nível dependendo da experiência adquirida"""
+        if self.exp >= self.lvl * 100:
+            self.lvl += 1
+            if self.lvl % 5 == 0:
+                print(f'🤩 Aopa! Agora você está no lvl {self.lvl}')
+
+    def gainExp(self, quantity):
+        """Aumenta o xp do monitor"""
+        self.exp += quantity
 
 data = {
     "cracker": {
@@ -8,9 +25,9 @@ data = {
 }
 
 info = {
-    "monitoring": {
-        "cost": 80,
-        "exp": 100
+    "class": {
+        "cost": 60, #80
+        "exp": 100 #100
     },
     "tasks": {
         "cost": 40,
